@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <h1>Recetas</h1>
 
 @foreach($recetas as $receta)
@@ -10,3 +12,4 @@
 @foreach($categorias as $categoria)
     <li>{{$categoria}}</li>
 @endforeach
+@endsection
