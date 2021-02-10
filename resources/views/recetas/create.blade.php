@@ -10,9 +10,9 @@
                 @csrf
                 <div class="form-group">
                     <label for="titulo">Titulo de la receta</label>
-                    <input type="text" 
-                        name="titulo" 
-                        id="titulo" 
+                    <input type="text"
+                        name="titulo"
+                        id="titulo"
                         class="form-control @error('titulo') is-invalid @enderror"
                         value="{{ old('titulo') }}"
                         placeholder="Titulo de la receta"
@@ -22,6 +22,14 @@
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select name="categoria" id="categoria" class="form-control">
+                        @foreach($categorias as $id => $categoria)
+                            <option value="{{ $id }}">{{ $categoria }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Agregar Receta"/>
