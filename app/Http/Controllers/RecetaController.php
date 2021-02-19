@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Receta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RecetaController extends Controller
 {
@@ -52,7 +53,14 @@ class RecetaController extends Controller
 
         ]);
         DB::table('recetas')->insert([
-            'titulo' => $data['titulo']
+            'titulo' => $data['titulo'],
+            'preparacion' => $data['preparacion'],
+            'ingredientes' => $data['ingredientes'],
+            'ingredientes' => $data['ingredientes'],
+            'imagen' => 'imagen.jpg',
+            'user_id' => Auth::user()->id,
+            'categoria_id' => $data['categoria'],
+
         ]);
 
         return redirect()->action('RecetaController@index');
