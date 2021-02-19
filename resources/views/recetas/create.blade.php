@@ -79,7 +79,12 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="imagen">Elige la imagen</label>
-                    <input type="file" name="imagen" id="imagen" class="form-control">
+                    <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror">
+                    @error('imagen')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
 
                 </div>
                 <div class="form-group">
