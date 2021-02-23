@@ -44,20 +44,29 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd( $request['imagen']->store('upload-recetas','public'));
+
+        //validacion
         $data = request()->validate([
             'titulo' => 'required|min:6',
             'categoria' => 'required',
             'preparacion' => 'required',
             'ingredientes' => 'required',
-            // 'imagen' => 'required|image',
+            'imagen' => 'required|image',
 
         ]);
+        
+        //obtencion de la ruta de la imagen
+        $ruta_imagen = $request['imagen']->store('upload-recetas','public');
+
+        //almacenar en la base de datos
         DB::table('recetas')->insert([
             'titulo' => $data['titulo'],
             'preparacion' => $data['preparacion'],
             'ingredientes' => $data['ingredientes'],
             'ingredientes' => $data['ingredientes'],
-            'imagen' => 'imagen.jpg',
+            'imagen' => $ruta_imagen,
             'user_id' => Auth::user()->id,
             'categoria_id' => $data['categoria'],
 
