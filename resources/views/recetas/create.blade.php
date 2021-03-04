@@ -34,12 +34,12 @@
                         class="form-control @error('categoria') is-invalid @enderror"
                     >
                         <option value="">Seleccione...</option>
-                        @foreach($categorias as $id => $categoria)
+                        @foreach($categorias as $categoria)
                             <option
-                                value="{{ $id }}"
-                                {{old('categoria') == $id ? 'selected' : ''}}
+                                value="{{ $categoria->id }}"
+                                {{old('categoria') == $categoria->id ? 'selected' : ''}}
                             >
-                                {{ $categoria }}
+                                {{ $categoria->nombre }}
                             </option>
                         @endforeach
                     </select>
@@ -52,7 +52,7 @@
                 <div class="form-group mt-3">
                     <label for="preparacion">Preparación</label>
                     <input type="hidden" name="preparacion" value="{{old('preparacion')}}" id="preparacion">
-                    <trix-editor 
+                    <trix-editor
                         input="preparacion"
                         class="form-control @error('preparacion') is-invalid @enderror"
                     >
@@ -66,9 +66,9 @@
                 <div class="form-group mt-3">
                     <label for="ingredientes">Ingredientes</label>
                     <input type="hidden" name="ingredientes" value="{{old('ingredientes')}}" id="ingredientes">
-                    <trix-editor 
+                    <trix-editor
                         input="ingredientes"
-                        class="form-control @error('ingredientes') is-invalid @enderror"    
+                        class="form-control @error('ingredientes') is-invalid @enderror"
                     >
                     </trix-editor>
                     @error('ingredientes')
