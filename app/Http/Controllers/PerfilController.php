@@ -78,6 +78,21 @@ class PerfilController extends Controller
             'biografia' => 'required'
         ]);
 
+        //actualizacion de la tabla users
+        auth()->user()->url = $data['url'];
+        auth()->user()->name = $data['nombre'];
+        auth()->user()->update();
+
+        //se eliminan variables del arreglo data
+        unset($data['url']);
+        unset($data['nombre']);
+
+
+        //actualizacion de la tabla perfil
+        auth()->user()->perfil()->update(
+            $data
+        );
+
 
         return "Actualizando perfil";
     }
