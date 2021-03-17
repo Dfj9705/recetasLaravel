@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class UsuarioSeeder extends Seeder
 {
@@ -13,21 +14,26 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+
+        $user = User::create([
             'name' => 'Daniel',
             'email' => 'correo@correo.com',
             'password' => Hash::make('123456789'),
             'url' => 'http://pagina.com',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
         ]);
-        DB::table('users')->insert([
+
+
+        $user->perfil()->create();
+        $user2 = User::create([
             'name' => 'Abner',
             'email' => 'correo2@correo.com',
             'password' => Hash::make('123456789'),
-            'url' => 'http://pagina2.com',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
+            'url' => 'http://pagina.com',
         ]);
+
+
+        $user2->perfil()->create();
+
+
     }
 }
