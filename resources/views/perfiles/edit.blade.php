@@ -66,7 +66,7 @@
                     @if ($perfil->imagen)
                         <div>
                             <p>Imagen Actual</p>
-                            {{-- <img src="/storage/{{ $perfil->imagen }}" style="width: 300px"> --}}
+                            <img src="/storage/{{ $perfil->imagen }}" style="width: 300px">
                         </div>
 
                     @endif
