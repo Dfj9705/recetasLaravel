@@ -59,6 +59,7 @@ class PerfilController extends Controller
     public function edit(Perfil $perfil)
     {
         //
+        return view('perfiles.edit', compact('perfil'));
     }
 
     /**
@@ -70,7 +71,15 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
-        //
+        //validar
+        $data = request()->validate([
+            'nombre' => 'required',
+            'url'=> 'required',
+            'biografia' => 'required'
+        ]);
+
+
+        return "Actualizando perfil";
     }
 
     /**

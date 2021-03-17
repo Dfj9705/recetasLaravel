@@ -10,15 +10,19 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 bg-white p-3">
             <form
-                action="{{ route}}"
+                action="{{ route('perfiles.update', ['perfil' => $perfil->id ])}}"
+                method="POST"
+                enctype="multipart/form-data"
             >
+                @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text"
                         name="nombre"
                         id="nombre"
                         class="form-control @error('nombre') is-invalid @enderror"
-                        value="{{ $perfil->nombre }}"
+                        value="{{ $perfil->usuario->name }}"
                         placeholder="Tu nombre"
                     />
                     @error('nombre')
@@ -33,7 +37,7 @@
                         name="url"
                         id="url"
                         class="form-control @error('url') is-invalid @enderror"
-                        value="{{ $perfil->url }}"
+                        value="{{ $perfil->usuario->url }}"
                         placeholder="Tu sitio web"
                     />
                     @error('url')
@@ -62,7 +66,7 @@
                     @if ($perfil->imagen)
                         <div>
                             <p>Imagen Actual</p>
-                            <img src="/storage/{{ $perfil->imagen }}" style="width: 300px">
+                            {{-- <img src="/storage/{{ $perfil->imagen }}" style="width: 300px"> --}}
                         </div>
 
                     @endif
@@ -72,7 +76,9 @@
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
-
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
                 </div>
             </form>
         </div>
