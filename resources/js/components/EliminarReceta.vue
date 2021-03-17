@@ -9,6 +9,9 @@
 
 <script>
 export default {
-
+    props : ['recetaId'],
+    mounted(){
+        console.log('receta actual', this.recetaId)
+    }
 }
 </script>
