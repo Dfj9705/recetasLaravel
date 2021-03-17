@@ -23,7 +23,7 @@ class UsuarioSeeder extends Seeder
         ]);
 
 
-        $user->perfil()->create();
+
         $user2 = User::create([
             'name' => 'Abner',
             'email' => 'correo2@correo.com',
@@ -32,7 +32,7 @@ class UsuarioSeeder extends Seeder
         ]);
 
 
-        $user2->perfil()->create();
+
 
 
     }
