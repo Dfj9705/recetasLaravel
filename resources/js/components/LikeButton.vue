@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span class="like-btn" @click="likeReceta" :class="{'like-active' : this.like }"></span>
+        <span class="like-btn" @click="likeReceta" :class="{'like-active' : isActive }"></span>
         <p>{{ cantidadLikes }} Les gustó esta receta </p>
     </div>
 </template>
@@ -10,6 +10,7 @@
         props: ['recetaId','like','likes'],
         data: function (){
             return {
+                isActive: this.like,
                 totalLikes : this.likes
             }
         },
@@ -25,9 +26,13 @@
                     }else{
                         this.$data.totalLikes--;
                     }
+
+                    this.isActive = !this.isActive;
                 } )
                 .catch( error => {
-                    console.log(error)
+                    if( error.response.status === 401 ){
+                        window.location = '/register';
+                    }
                 })
             }
         },

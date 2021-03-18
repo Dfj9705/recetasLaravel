@@ -7,57 +7,9 @@ use Illuminate\Http\Request;
 
 class LikesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Receta  $receta
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Receta $receta)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Receta  $receta
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Receta $receta)
-    {
-        //
+        $this->middleware('auth');
     }
 
     /**
@@ -72,14 +24,4 @@ class LikesController extends Controller
         return auth()->user()->meGusta()->toggle($receta);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Receta  $receta
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Receta $receta)
-    {
-        //
-    }
 }
