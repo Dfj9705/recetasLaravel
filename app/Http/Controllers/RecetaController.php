@@ -114,7 +114,11 @@ class RecetaController extends Controller
 
         $like = ( auth()->user() ) ? auth()->user()->meGusta->contains($receta->id) : false;
 
-        return view('recetas.show', compact('receta', 'like'));
+        //pasa la cantidad de likes
+
+        $likes = $receta->likes->count();
+
+        return view('recetas.show', compact('receta', 'like','likes'));
     }
 
     /**
