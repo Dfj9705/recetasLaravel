@@ -30,6 +30,6 @@ class InicioController extends Controller
         }
         // return $recetas;
 
-        return view('inicio.index',compact('nuevas'));
+        return view('inicio.index',compact('nuevas','recetas'));
     }
 }
