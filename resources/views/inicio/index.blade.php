@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('/images/bgimagen.jpg')}}" alt="imagen fondo">
     <div class="container nuevas-recetas">
         <h2 class="titulo-categoria text-uppercase mb-4">Últimas Recetas</h2>
         <div class="owl-carousel owl-theme">
@@ -32,11 +31,11 @@
         <h2 class="titulo-categoria text-uppercase mt-5 mb-4">Recetas mas votadas</h2>
 
         <div class="row">
-            
+
             @foreach ($votadas as $receta)
                 @include('ui.receta')
             @endforeach
-            
+
         </div>
     </div>
 
