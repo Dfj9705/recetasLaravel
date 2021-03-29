@@ -95,8 +95,8 @@ class PerfilController extends Controller
             $ruta_imagen = $request['imagen']->store('upload-perfiles','public');
 
             //resize de la img
-            // $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(600,600);
-            // $img->save();
+            $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(600,600);
+            $img->save();
 
             $array_imagen = ['imagen' => $ruta_imagen];
         }
