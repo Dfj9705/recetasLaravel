@@ -27,6 +27,9 @@ Route::get('/', 'InicioController@index')->name('inicio.index');
 
 Route::resource('recetas', 'RecetaController');
 
+//buscador
+Route::get('/buscar', 'RecetaController@search' )->name('buscar.show');
+
 Route::get('/categoria/{categoriaReceta}', 'CategoriasController@show')->name('categorias.show');
 
 Route::get('/perfiles/{perfil}', 'PerfilController@show')->name('perfiles.show');
